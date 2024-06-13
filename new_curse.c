@@ -50,6 +50,7 @@ char * new_curse_name= "@(#) new_curse.c $Revision: 1.54 $";
 
 #ifdef SYS5
 #include <string.h>
+#include <sys/ioctl.h>
 #else
 #include <strings.h>
 #endif
@@ -82,6 +83,8 @@ char * new_curse_name= "@(#) new_curse.c $Revision: 1.54 $";
 #include <sys/ioctl.h>
 #endif
 
+
+struct _line *top_of_win;
 
 WINDOW *curscr;
 static WINDOW *virtual_scr;
@@ -643,8 +646,8 @@ int attributes_set[9];
 static int nc_attributes = 0;	/* global attributes for new_curse to observe */
 
 #ifdef SYS5
-struct termio Terminal;
-struct termio Saved_tty;
+struct termios Terminal;
+struct termios Saved_tty;
 #else
 struct sgttyb Terminal;
 struct sgttyb Saved_tty;
@@ -2330,7 +2333,7 @@ int first_char;				/* first character of sequence	*/
 	char *Gtemp;
 	int Found;
 #ifdef SYS5
-	struct termio Gterminal;
+	struct termios Gterminal;
 #else
 	struct sgttyb Gterminal;
 #endif

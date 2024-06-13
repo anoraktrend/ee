@@ -42,7 +42,7 @@
 #include <stdio.h>
 
 #ifdef SYS5
-#include <termio.h>
+#include <termios.h>
 #else
 #include <sgtty.h>
 #include <fcntl.h>
@@ -161,7 +161,7 @@ struct _line {
 	int number;
 	};
 
-struct _line *top_of_win;
+extern struct _line *top_of_win;
 
 typedef struct WIND {
 	int SR;		/* starting row		*/
