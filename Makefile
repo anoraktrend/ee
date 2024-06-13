@@ -2,7 +2,7 @@ PREFIX?=	/usr/local
 
 CC?=		clang
 CFLAGS?=	# empty
-CFLAGS+=	-DHAS_NCURSES -DHAS_UNISTD -DHAS_STDARG -DHAS_STDLIB -DHAS_SYS_WAIT -Ofast -march=native -mtune=native -flto
+CFLAGS+=	-DHAS_NCURSES -DHAS_UNISTD -DHAS_STDARG -DHAS_STDLIB -DHAS_SYS_WAIT -DNO_CATGETS -Ofast -march=native -mtune=native -flto
 PGOCFLAGS+=	-DHAS_NCURSES -DHAS_UNISTD -DHAS_STDARG -DHAS_STDLIB -DHAS_SYS_WAIT -Ofast -march=native -mtune=native -flto -fprofile-generate
 #CFLAGS+=	-Wall -Wextra -pedantic
 CFLAGS+=	-w
@@ -10,7 +10,7 @@ CFLAGS+=	-w
 #2CFLAGS+=	-Wall -Wextra -pedantic
 2CFLAGS+=	-w
 
-LIBS=		-lncursesw
+LIBS=		-lc  -v -lncursesw
 
 PROG=		ee
 
